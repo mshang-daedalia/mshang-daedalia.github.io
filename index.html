@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mio AI – Coming Soon</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        video.bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(50%);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 5vw;
+            text-align: left;
+        }
+
+        .content {
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 6rem;
+            font-family: 'Bebas Neue', sans-serif;
+
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 2.8rem; /* ⬅️ Increased */
+            font-family: 'Bebas Neue', sans-serif;
+
+            font-weight: normal;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .subscribe-button {
+            margin-top: 2.5rem;
+            padding: 0.75rem 2rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #000;
+            background-color: #ffffff;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Bebas Neue', sans-serif;
+            text-decoration: none;
+
+        }
+
+        .subscribe-button:hover {
+            background-color: #ddd;
+        }
+
+        .social {
+            margin-top: 2rem;
+        }
+
+        .social a {
+            margin-right: 20px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.8rem;
+        }
+
+        .social a:hover {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .overlay {
+                padding: 2rem;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 1.5rem; /* ⬅️ Proportional mobile scaling */
+            }
+
+            .subscribe-button {
+                font-size: 1rem;
+                padding: 0.6rem 1.5rem;
+            }
+        }
+
+        .intro {
+/*            font-family: 'Helvetica Neue', sans-serif;*/
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 1.2rem;
+            line-height: 1.7;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+
+        .volume-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 1.2rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.3s ease;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        .volume-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+
+        .footer {
+            position: relative;
+            margin-top: 50px;
+/*            bottom: 10px;*/
+/*            width: 100%;*/
+            text-align: left;
+            font-size: 0.85rem;
+            color: #ccc;
+            z-index: 5;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <video id="bgVideo" class="bg-video" autoplay muted loop playsinline>
+        <source src="0504.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="overlay">
+        <div class="content">
+            <h1>Mio AI</h1>
+            <h2>A presence beside you</h2>
+            <p class="intro">
+                All other AI companions think loneliness = boredom. 
+                <br>
+                They are wrong. 
+            </p>
+            <p class="intro">
+                Companion is not just about talking. 
+                <br>
+                It is a <b><u>FELT PRESENCE</u></b>. 
+            </p>    
+            <p class="intro">
+
+                With commitment, a small, curious team from Carnegie Mellon swear to build it right.
+            </p>
+
+            <!-- <button class="subscribe-button"> -->
+                <a class="subscribe-button" href="https://forms.gle/iMeadM3jwbjEgonz8" target="_blank" rel="noopener noreferrer">
+                    I am interested!
+                </a>
+            <!-- </button> -->
+
+            <div class="footer">
+                michael@daedalia.us
+                <br>
+                @Daedalia, Inc 2025
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 🔊 Volume Button -->
+    <button class="volume-toggle" onclick="toggleVolume()" id="volumeBtn">
+        <span id="volumeText"><s>SOUND OFF</s></span>
+    </button>
+
+
+    <script>
+    const video = document.getElementById('bgVideo');
+    const volumeText = document.getElementById('volumeText');
+
+    function toggleVolume() {
+        video.muted = !video.muted;
+        video.play(); // ensure it's playing
+
+        if (video.muted) {
+            volumeText.innerHTML = '<s>SOUND OFF</s>';
+        } else {
+            volumeText.textContent = 'SOUND ON';
+        }
+    }
+
+    // Optional: auto-unmute on first click anywhere
+    // document.addEventListener('click', function handleFirstClick() {
+    //     if (video.muted) {
+    //         video.muted = false;
+    //         video.play();
+    //         volumeText.textContent = 'SOUND ON';
+    //     }
+    //     document.removeEventListener('click', handleFirstClick);
+    // });
+</script>
+
+</body>
+</html>
