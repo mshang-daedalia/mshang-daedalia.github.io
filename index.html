@@ -117,6 +117,28 @@
             z-index: 5;
             font-family: 'Helvetica Neue', sans-serif;
         }
+
+
+        .volume-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 1.2rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.3s ease;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        .volume-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
     </style>
 </head>
 <body>
@@ -141,6 +163,38 @@
             </div>
         </div>
     </div>
+
+
+<!-- 🔊 Volume Button -->
+<button class="volume-toggle" onclick="toggleVolume()" id="volumeBtn">
+    <span id="volumeText"><s>SOUND OFF</s></span>
+</button>
+
+<!-- 🔈 Background Audio -->
+<audio id="bgAudio" loop autoplay muted>
+    <source src="theme.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script>
+const audio = document.getElementById('bgAudio');
+const volumeText = document.getElementById('volumeText');
+
+function toggleVolume() {
+    if (audio.muted) {
+        audio.muted = false;
+        audio.play();
+        volumeText.textContent = 'SOUND ON';
+    } else {
+        audio.muted = true;
+        volumeText.innerHTML = '<s>SOUND OFF</s>';
+    }
+}
+
+
+</script>
+
+
 
 </body>
 </html>
