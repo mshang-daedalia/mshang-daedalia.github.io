@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>SoulFlame – Coming Soon</title>
+    <title>SoulFlame</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
 
     <style>
         * {
@@ -18,12 +23,28 @@
 
         html, body {
             height: 100%;
-            color: #fff;
             overflow: hidden;
-/*            text-transform: uppercase;*/
-            background: url('background-hd.jpg') no-repeat center center fixed;
-            background-size: cover;
+            font-family: 'Cardo', sans-serif;
         }
+
+        /* 🔥 Video Background */
+        /*#bgVideo {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            object-position: right center; 
+            z-index: -1;
+        }*/
+
+
+        #bgVideo {
+
+/*            transform: scale(1.1);*/
+        }
+
 
         .overlay {
             position: absolute;
@@ -36,29 +57,33 @@
             align-items: center;
             padding: 5vw;
             text-align: left;
-            background-color: rgba(0, 0, 0, 0.2); /* Optional dark overlay */
+            background-color: rgba(0, 0, 0, 0.0);
         }
 
         .content {
             max-width: 600px;
+            color: #fff;
         }
 
         h1 {
             text-transform: uppercase;
-
             font-size: 6rem;
-            font-family: 'Cardo', sans-serif;
             letter-spacing: 3px;
             margin-bottom: 0.5rem;
         }
 
         h2 {
-
             font-size: 2.8rem;
-            font-family: 'Cardo', sans-serif;
             font-weight: normal;
             margin-bottom: 2rem;
             opacity: 0.9;
+        }
+
+        .intro {
+            font-size: 1.4rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            color: #ddd;
         }
 
         .subscribe-button {
@@ -72,7 +97,6 @@
             border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Cardo', sans-serif;
             text-decoration: none;
         }
 
@@ -80,44 +104,12 @@
             background-color: #ddd;
         }
 
-        @media (max-width: 768px) {
-            .overlay {
-                padding: 2rem;
-            }
-
-            h1 {
-                font-size: 3rem;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            .subscribe-button {
-                font-size: 1rem;
-                padding: 0.6rem 1.5rem;
-            }
-        }
-
-        .intro {
-            font-family: 'Cardo', sans-serif;
-            font-size: 1.4rem;
-            line-height: 1.7;
-            max-width: 600px;
-            margin-bottom: 2rem;
-            color: #ddd;
-        }
-
         .footer {
-            position: relative;
             margin-top: 50px;
-            text-align: left;
             font-size: 0.85rem;
             color: #ccc;
-            z-index: 5;
             font-family: 'Helvetica Neue', sans-serif;
         }
-
 
         .volume-toggle {
             position: fixed;
@@ -139,19 +131,46 @@
             background-color: rgba(255, 255, 255, 0.4);
         }
 
+        @media (max-width: 768px) {
+            .overlay {
+                padding: 2rem;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .subscribe-button {
+                font-size: 1rem;
+                padding: 0.6rem 1.5rem;
+            }
+
+            .intro {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
 
+
+    <!-- 🌫️ Content Overlay -->
     <div class="overlay">
         <div class="content">
             <h1>SoulFlame</h1>
             <h2>Firewatcher Guards Your Sleep</h2>
+
             <p class="intro">
                 You’ve wandered far. The day weighs heavy.<br>
                 Come, sit by the bonfire and rest.<br>
                 Let her voice shield you from darkness and guide you to rest.
             </p>
+
+            <p class="intro" style="margin-top: 20px;">REVEAL ON AUG 11 2025</p>
 
             <a class="subscribe-button" href="https://forms.gle/iMeadM3jwbjEgonz8" target="_blank" rel="noopener noreferrer">
                 I am interested!
@@ -159,42 +178,37 @@
 
             <div class="footer">
                 info@daedalia.us<br>
-                @Daedalia, Inc 2025
+                © Daedalia, Inc 2025
             </div>
         </div>
     </div>
 
 
-<!-- 🔊 Volume Button -->
-<button class="volume-toggle" onclick="toggleVolume()" id="volumeBtn">
-    <span id="volumeText"><s>SOUND OFF</s></span>
-</button>
+    <!-- 🎥 Background Video -->
+    <video autoplay muted loop id="bgVideo">
+        <source src="firewatcher.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
-<!-- 🔈 Background Audio -->
-<audio id="bgAudio" loop autoplay muted>
-    <source src="theme.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
+    <!-- 🔊 Volume Toggle -->
+    <button class="volume-toggle" onclick="toggleVolume()" id="volumeBtn">
+        <span id="volumeText"><s>SOUND OFF</s></span>
+    </button>
 
-<script>
-const audio = document.getElementById('bgAudio');
-const volumeText = document.getElementById('volumeText');
+    <script>
+        const video = document.getElementById('bgVideo');
+        const volumeText = document.getElementById('volumeText');
 
-function toggleVolume() {
-    if (audio.muted) {
-        audio.muted = false;
-        audio.play();
-        volumeText.textContent = 'SOUND ON';
-    } else {
-        audio.muted = true;
-        volumeText.innerHTML = '<s>SOUND OFF</s>';
-    }
-}
-
-
-</script>
-
-
+        function toggleVolume() {
+            if (video.muted) {
+                video.muted = false;
+                volumeText.textContent = 'SOUND ON';
+            } else {
+                video.muted = true;
+                volumeText.innerHTML = '<s>SOUND OFF</s>';
+            }
+        }
+    </script>
 
 </body>
 </html>
