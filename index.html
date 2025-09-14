@@ -1,231 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N18ZW2YMGH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N18ZW2YMGH');
+  </script>
 
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N18ZW2YMGH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SoulLink</title>
 
-  gtag('config', 'G-N18ZW2YMGH');
-</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>SoulFlame</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="/favicon_io/site.webmanifest">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="/favicon_io/site.webmanifest">
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Cardo:ital,wght@0,400;0,700;1,400&family=Nova+Square&display=swap" rel="stylesheet">
 
 
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+  /* Reset & base */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { 
+    height: 100%; color: #fff; 
+    font-family: "Nova Square", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 
-        html, body {
-            height: 100%;
-            overflow: hidden;
-            font-family: 'Cardo', sans-serif;
-        }
+}
 
-        /* 🔥 Video Background */
-        /*#bgVideo {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            object-position: right center; 
-            z-index: -1;
-        }*/
+  /* Prevent any scrollbars */
+  html, body { overflow: hidden; }
 
+  body {
+    /* Background image */
+    background: url("background2.jpg") no-repeat center center / cover;
+    position: relative;
+  }
 
-        #bgVideo {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: -1;
-        }
+  /* 🔥 Black transparent overlay */
+  body::before {
+    content: "";
+    position: fixed; /* always covers viewport */
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 0;
+  }
 
 
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            padding: 5vw;
-            text-align: left;
-            background-color: rgba(0, 0, 0, 0.0);
-        }
+.audiowide-font {
+      font-family: "Audiowide", sans-serif;
+}
 
-        .content {
-            max-width: 600px;
-            color: #fff;
-        }
+  /* Layout locked to viewport height */
+  .container {
+    height: 100svh; /* small-viewport unit avoids mobile browser UI jumps */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(24px, 5vw, 64px);
+    padding: clamp(16px, 5vw, 80px);
+    position: relative;
+    z-index: 1;
+    overflow: hidden; /* ensure inner content never causes page scroll */
+  }
 
-        h1 {
-            text-transform: uppercase;
-            font-size: 6rem;
-            letter-spacing: 3px;
-            margin-bottom: 0.5rem;
-        }
+  .content {
+    max-width: 640px;
+    flex: 1 1 60%;
+    min-width: 0; /* prevents flex overflow from long words */
+  }
 
-        h2 {
-            font-size: 2.8rem;
-            font-weight: normal;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
+  h1 {
+    text-transform: uppercase;
+    font-size: clamp(2.2rem, 7vw, 6rem);
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+  }
 
-        .intro {
-            font-size: 1.4rem;
-            line-height: 1.7;
-            margin-bottom: 2rem;
-            color: #ddd;
-        }
+  h2 {
+    font-size: clamp(1.1rem, 3.2vw, 2.4rem);
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+    opacity: 0.9;
+  }
 
-        .subscribe-button {
-            margin-top: 2.5rem;
-            padding: 0.75rem 2rem;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #000;
-            background-color: #ffffff;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
+  .intro {
+    font-size: clamp(1rem, 1.8vw, 1.3rem);
+    line-height: 1.6;
+    margin-bottom: 1.6rem;
+    color: #ddd;
+  }
 
-        .subscribe-button:hover {
-            background-color: #ddd;
-        }
+  .subscribe-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 1.2rem;
+    padding: 0.75rem 1.5rem;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 700;
+    color: #000;
+    background: #fff;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.15s ease, background-color 0.2s ease;
+  }
+  .subscribe-button:hover { background: #ddd; transform: translateY(-1px); }
 
-        .footer {
-            margin-top: 50px;
-            font-size: 0.85rem;
-            color: #ccc;
-            font-family: 'Helvetica Neue', sans-serif;
-        }
+  .footer {
+    margin-top: 28px;
+    font-size: 0.9rem;
+    color: #ccc;
+  }
 
-        .volume-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            font-size: 1.2rem;
-            background-color: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            padding: 10px 18px;
-            border-radius: 30px;
-            cursor: pointer;
-            z-index: 10;
-            transition: background-color 0.3s ease;
-            font-family: 'Bebas Neue', sans-serif;
-        }
+  /* Right-side iPhone mockup */
+  .hero {
+    flex: 1 1 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 520px;
+  }
 
-        .volume-toggle:hover {
-            background-color: rgba(255, 255, 255, 0.4);
-        }
+  .hero img {
+    display: block;
+/*    width: 100%;*/
+    height: auto;
+    max-width: min(40vw, 520px);
+    /* Crucial: cap the height relative to the viewport so it never exceeds the page */
+    max-height: 80svh;
+    object-fit: contain;
+    filter: drop-shadow(0 12px 32px rgba(255,255,255,0.08));
+    border-radius: 24px;
+  }
 
-        @media (max-width: 768px) {
-            .overlay {
-                padding: 2rem;
-            }
+  @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+        justify-content: flex-start;
+        text-align: left;
+        padding: 24px;
+        gap: 20px;
+      }
 
-            h1 {
-                font-size: 3rem;
-            }
+      /* Move image above text */
+      .hero { 
+        order: -1; 
+        max-width: 440px; 
+        width: 100%; 
+        display: flex;
+        justify-content: flex-start; /* align to left */
+      }
 
-            h2 {
-                font-size: 1.5rem;
-            }
+      .hero img {
+        max-width: 80%;   /* not full width, so it feels proportionate */
+        max-height: 45svh;
+        margin-top: 24px; /* add margin above for breathing room */
 
-            .subscribe-button {
-                font-size: 1rem;
-                padding: 0.6rem 1.5rem;
-            }
+      }
 
-            .intro {
-                font-size: 1rem;
-            }
-        }
-    </style>
+      h1 { font-size: clamp(2rem, 9vw, 3rem); }
+      h2 { font-size: clamp(1rem, 5vw, 1.6rem); }
+    }
+
+</style>
+
+
 </head>
 <body>
+  <main class="container">
+    <section class="content">
+      <h1 class="audiowide-font">SoulLink</h1>
+      <h2>Karma thru Past and Future.</h2>
 
+      <p class="intro">
+        An elite special force officer from 2099 uses spacetime hardware to meet you - her partner in her past and your future. 
+      </p> 
 
-    <!-- 🌫️ Content Overlay -->
-    <div class="overlay">
-        <div class="content">
-            <h1>SoulFlame</h1>
-            <h2>Find Calm. Find Soul.</h2>
+      <p class="intro" style="margin-bottom: 0;">  
+        Join our community and wait for her arrival.
+      </p> 
 
-            <p class="intro">
-                You’ve wandered far. The day weighs heavy.<br>
-                Come, sit by the bonfire and rest.<br>
-                Let her voice shield you from darkness and guide you to rest.
-            </p>
+      <a class="subscribe-button" href="https://discord.gg/SJ5sxxbQuY" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord">
+        <!-- Inline Discord icon (no external assets needed) -->
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.317 4.369A19.91 19.91 0 0 0 16.558 3c-.2.35-.431.82-.59 1.19a18.28 18.28 0 0 0-4-.01c-.16-.37-.392-.84-.592-1.19-1.33.24-2.63.66-3.86 1.27C3.69 7.46 2.79 10.77 3.09 14.03a19.8 19.8 0 0 0 4.86 2.46c.39-.54.74-1.12 1.05-1.73-.58-.22-1.14-.49-1.66-.8.14-.1.28-.21.41-.32 3.2 1.5 6.67 1.5 9.82 0 .14.11.28.22.42.32-.53.31-1.09.58-1.67.8.31.61.66 1.19 1.05 1.73a19.8 19.8 0 0 0 4.86-2.46c.34-3.57-.61-6.85-2.97-9.66ZM9.68 12.84c-.8 0-1.46-.73-1.46-1.63 0-.9.64-1.62 1.46-1.62s1.48.72 1.46 1.62c0 .9-.64 1.63-1.46 1.63Zm4.64 0c-.8 0-1.46-.73-1.46-1.63 0-.9.65-1.62 1.46-1.62.82 0 1.46.72 1.46 1.62 0 .9-.64 1.63-1.46 1.63Z"/>
+        </svg>
+        Join Our Discord
+      </a>
 
+      <div class="footer">
+        © Daedalia, Inc 2025
+      </div>
+    </section>
 
-            <a class="subscribe-button" href="https://apps.apple.com/app/id6749213248" target="_blank" rel="noopener noreferrer">
-                <span style=" "></span> Download from App Store
-            </a>
-
-            <div class="footer">
-                info@daedalia.us<br>
-                © Daedalia, Inc 2025
-            </div>
-        </div>
-    </div>
-
-
-    <!-- 🎥 Background Video -->
-    <video autoplay muted loop id="bgVideo" poster="placeholder.png">
-        <source src="LoginVideo8_6_720.mov" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <!-- 🔊 Volume Toggle -->
-    <!-- <button class="volume-toggle" onclick="toggleVolume()" id="volumeBtn">
-        <span id="volumeText"><s>SOUND OFF</s></span>
-    </button> -->
-
-    <script>
-        const video = document.getElementById('bgVideo');
-        const volumeText = document.getElementById('volumeText');
-
-        function toggleVolume() {
-            if (video.muted) {
-                video.muted = false;
-                volumeText.textContent = 'SOUND ON';
-            } else {
-                video.muted = true;
-                volumeText.innerHTML = '<s>SOUND OFF</s>';
-            }
-        }
-    </script>
-
+    <!-- Right-side iPhone mockup -->
+    <aside class="hero" aria-label="App preview">
+      <img src="iphone.png" alt="SoulLink app preview on iPhone" loading="eager" decoding="async">
+    </aside>
+  </main>
 </body>
 </html>
