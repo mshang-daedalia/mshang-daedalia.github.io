@@ -5,7 +5,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-N18ZW2YMGH"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){dataLayer.push(arguments);} 
     gtag('js', new Date());
     gtag('config', 'G-N18ZW2YMGH');
   </script>
@@ -24,194 +24,146 @@
   <link rel="manifest" href="/favicon_io/site.webmanifest">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Cardo:ital,wght@0,400;0,700;1,400&family=Nova+Square&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Cardo:ital,wght@0,400;0,700;1,400&family=Nova+Square&display=swap" rel="stylesheet">
 
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; color: #fff; font-family: "Nova Square", sans-serif; }
+    html, body { overflow: hidden; }
 
+    body { background: url("background3.png") no-repeat center center / cover; position: relative; }
+    body::before { content: ""; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 0; }
 
-<style>
-  /* Reset & base */
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { 
-    height: 100%; color: #fff; 
-    font-family: "Nova Square", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+    .audiowide-font { font-family: "Audiowide", sans-serif; }
 
-}
-
-  /* Prevent any scrollbars */
-  html, body { overflow: hidden; }
-
-  body {
-    /* Background image */
-    background: url("background2.jpg") no-repeat center center / cover;
-    position: relative;
-  }
-
-  /* 🔥 Black transparent overlay */
-  body::before {
-    content: "";
-    position: fixed; /* always covers viewport */
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    z-index: 0;
-  }
-
-
-.audiowide-font {
-      font-family: "Audiowide", sans-serif;
-}
-
-  /* Layout locked to viewport height */
-  .container {
-    height: 100svh; /* small-viewport unit avoids mobile browser UI jumps */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: clamp(24px, 5vw, 64px);
-    padding: clamp(16px, 5vw, 80px);
-    position: relative;
-    z-index: 1;
-    overflow: hidden; /* ensure inner content never causes page scroll */
-  }
-
-  .content {
-    max-width: 640px;
-    flex: 1 1 60%;
-    min-width: 0; /* prevents flex overflow from long words */
-  }
-
-  h1 {
-    text-transform: uppercase;
-    font-size: clamp(2.2rem, 7vw, 6rem);
-    letter-spacing: 3px;
-    margin-bottom: 0.5rem;
-  }
-
-  h2 {
-    font-size: clamp(1.1rem, 3.2vw, 2.4rem);
-    font-weight: 400;
-    margin-bottom: 1.2rem;
-    opacity: 0.9;
-  }
-
-  .intro {
-    font-size: clamp(1rem, 1.8vw, 1.3rem);
-    line-height: 1.6;
-    margin-bottom: 1.6rem;
-    color: #ddd;
-  }
-
-  .subscribe-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 1.2rem;
-    padding: 0.75rem 1.5rem;
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    font-weight: 700;
-    color: #000;
-    background: #fff;
-    border: none;
-    border-radius: 999px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: transform 0.15s ease, background-color 0.2s ease;
-  }
-  .subscribe-button:hover { background: #ddd; transform: translateY(-1px); }
-
-  .footer {
-    margin-top: 28px;
-    font-size: 0.9rem;
-    color: #ccc;
-  }
-
-  /* Right-side iPhone mockup */
-  .hero {
-    flex: 1 1 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 520px;
-  }
-
-  .hero img {
-    display: block;
-/*    width: 100%;*/
-    height: auto;
-    max-width: min(40vw, 520px);
-    /* Crucial: cap the height relative to the viewport so it never exceeds the page */
-    max-height: 80svh;
-    object-fit: contain;
-    filter: drop-shadow(0 12px 32px rgba(255,255,255,0.08));
-    border-radius: 24px;
-  }
-
-  @media (max-width: 900px) {
-      .container {
-        flex-direction: column;
-        justify-content: flex-start;
-        text-align: left;
-        padding: 24px;
-        gap: 20px;
-      }
-
-      /* Move image above text */
-      .hero { 
-        order: -1; 
-        max-width: 440px; 
-        width: 100%; 
-        display: flex;
-        justify-content: flex-start; /* align to left */
-      }
-
-      .hero img {
-        max-width: 80%;   /* not full width, so it feels proportionate */
-        max-height: 45svh;
-        margin-top: 24px; /* add margin above for breathing room */
-
-      }
-
-      h1 { font-size: clamp(2rem, 9vw, 3rem); }
-      h2 { font-size: clamp(1rem, 5vw, 1.6rem); }
+    .container {
+      height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: clamp(24px, 5vw, 64px);
+      padding: clamp(16px, 5vw, 80px);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
     }
 
-</style>
+    .content { max-width: 640px; flex: 1 1 60%; min-width: 0; }
 
+    h1 { text-transform: uppercase; font-size: clamp(2.2rem, 7vw, 6rem); margin-bottom: 0.5rem; }
+    h2 { font-size: clamp(1.1rem, 3.2vw, 2.4rem); margin-bottom: 1.2rem; opacity: 0.9; }
+    .intro { font-size: clamp(1rem, 1.8vw, 1.3rem); line-height: 1.6; margin-bottom: 1.6rem; color: #ddd; }
 
+    .subscribe-button { display: inline-flex; align-items: center; gap: 10px; margin-top: 1.2rem; padding: 0.75rem 1.5rem; font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 700; color: #000; background: #fff; border-radius: 999px; text-decoration: none; }
+    .footer { margin-top: 28px; font-size: 0.9rem; color: #ccc; }
+
+    .hero { flex: 0 0 auto; display: flex; justify-content: center; align-items: center; position: relative; }
+
+    .iphone-frame {
+      position: relative;
+      display: inline-block;
+      height: 95svh;
+      width: auto;
+    }
+
+    .iphone-frame img.frame {
+      display: block;
+      height: 100%;
+      width: auto;
+      position: relative;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .iphone-frame video {
+      position: absolute;
+      top: 2%;
+      left: 5%;
+      width: 90%;
+      height: 96%;
+      border-radius: 24px;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    /* Music toggle inside iPhone mockup */
+    .music-toggle {
+      position: absolute;
+      bottom: 25%; /* moved higher */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      padding: 20px 35px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-family: "Nova Square", sans-serif;
+      color: #fff;
+      background: rgba(0,0,0,0.65);
+      border: 2px solid rgba(255,255,255,0.7);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .music-toggle.off {
+      text-decoration: line-through;
+    }
+    .music-toggle:hover { background: rgba(255,255,255,0.2); }
+  </style>
 </head>
 <body>
+  <audio id="bgMusic" src="background.mp3" loop preload="none"></audio>
+
   <main class="container">
     <section class="content">
       <h1 class="audiowide-font">SoulLink</h1>
       <h2>Karma thru Past and Future.</h2>
-
-      <p class="intro">
-        An elite special force officer from 2099 uses spacetime hardware to meet you - her partner in her past and your future. 
-      </p> 
-
-      <p class="intro" style="margin-bottom: 0;">  
-        Join our community and wait for her arrival.
-      </p> 
-
-      <a class="subscribe-button" href="https://discord.gg/SJ5sxxbQuY" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord">
-        <!-- Inline Discord icon (no external assets needed) -->
-        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M20.317 4.369A19.91 19.91 0 0 0 16.558 3c-.2.35-.431.82-.59 1.19a18.28 18.28 0 0 0-4-.01c-.16-.37-.392-.84-.592-1.19-1.33.24-2.63.66-3.86 1.27C3.69 7.46 2.79 10.77 3.09 14.03a19.8 19.8 0 0 0 4.86 2.46c.39-.54.74-1.12 1.05-1.73-.58-.22-1.14-.49-1.66-.8.14-.1.28-.21.41-.32 3.2 1.5 6.67 1.5 9.82 0 .14.11.28.22.42.32-.53.31-1.09.58-1.67.8.31.61.66 1.19 1.05 1.73a19.8 19.8 0 0 0 4.86-2.46c.34-3.57-.61-6.85-2.97-9.66ZM9.68 12.84c-.8 0-1.46-.73-1.46-1.63 0-.9.64-1.62 1.46-1.62s1.48.72 1.46 1.62c0 .9-.64 1.63-1.46 1.63Zm4.64 0c-.8 0-1.46-.73-1.46-1.63 0-.9.65-1.62 1.46-1.62.82 0 1.46.72 1.46 1.62 0 .9-.64 1.63-1.46 1.63Z"/>
-        </svg>
-        Join Our Discord
-      </a>
-
-      <div class="footer">
-        © Daedalia, Inc 2025
-      </div>
+      <p class="intro">An elite special force officer from 2099 uses spacetime hardware to meet you - her partner in her past and your future.</p>
+      <p class="intro" style="margin-bottom: 0;">Join our community and wait for her arrival.</p>
+      <a class="subscribe-button" href="https://discord.gg/SJ5sxxbQuY" target="_blank">Join Our Discord</a>
+      <div class="footer">© Daedalia, Inc 2025</div>
     </section>
 
-    <!-- Right-side iPhone mockup -->
-    <aside class="hero" aria-label="App preview">
-      <img src="iphone.png" alt="SoulLink app preview on iPhone" loading="eager" decoding="async">
+    <aside class="hero">
+      <div class="iphone-frame">
+        <video src="iphone.mp4" autoplay muted loop playsinline></video>
+        <img src="iphone-mockup.png" alt="iPhone frame" class="frame">
+        <button id="musicToggle" class="music-toggle off" aria-pressed="false">SOUND OFF</button>
+      </div>
     </aside>
   </main>
+
+  <script>
+    const btn = document.getElementById('musicToggle');
+    const audio = document.getElementById('bgMusic');
+
+    function setState(playing) {
+      if (playing) {
+        btn.setAttribute('aria-pressed', 'true');
+        btn.textContent = 'SOUND ON';
+        btn.classList.remove('off');
+      } else {
+        btn.setAttribute('aria-pressed', 'false');
+        btn.textContent = 'SOUND OFF';
+        btn.classList.add('off');
+      }
+    }
+
+    btn.addEventListener('click', async () => {
+      try {
+        if (audio.paused) {
+          await audio.play();
+          setState(true);
+        } else {
+          audio.pause();
+          setState(false);
+        }
+      } catch (e) { console.warn(e); }
+    });
+
+    audio.addEventListener('pause', () => setState(false));
+    audio.addEventListener('play', () => setState(true));
+  </script>
 </body>
 </html>
