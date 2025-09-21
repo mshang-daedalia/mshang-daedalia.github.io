@@ -62,12 +62,12 @@
 
     .content { max-width: 640px; flex: 1 1 60%; min-width: 0; }
 
-    h1 { text-transform: uppercase; font-size: clamp(2.2rem, 7vw, 6rem); margin-bottom: 0.5rem; }
-    h2 { font-size: clamp(1.1rem, 3.2vw, 2.4rem); margin-bottom: 1.2rem; opacity: 0.9; }
-    .intro { font-size: clamp(1rem, 1.8vw, 1.3rem); line-height: 1.6; margin-bottom: 1.6rem; color: #ddd; }
+    h1 { text-transform: uppercase; font-size: clamp(2rem, 7vw, 4rem); margin-bottom: 0.5rem; }
+    h2 { font-size: clamp(1rem, 4vw, 2rem); margin-bottom: 1.2rem; opacity: 0.9; }
+    .intro { font-size: clamp(0.9rem, 2.5vw, 1.2rem); line-height: 1.6; margin-bottom: 1.6rem; color: #ddd; }
 
-    .subscribe-button { display: inline-flex; align-items: center; gap: 10px; margin-top: 1.2rem; padding: 0.75rem 1.5rem; font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 700; color: #000; background: #fff; border-radius: 999px; text-decoration: none; }
-    .footer { margin-top: 28px; font-size: 0.9rem; color: #ccc; }
+    .subscribe-button { display: inline-flex; align-items: center; gap: 10px; margin-top: 1.2rem; padding: 0.6rem 1.2rem; font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 700; color: #000; background: #fff; border-radius: 999px; text-decoration: none; }
+    .footer { margin-top: 20px; font-size: 0.8rem; color: #ccc; }
 
     .hero { flex: 0 0 auto; display: flex; justify-content: center; align-items: center; position: relative; }
 
@@ -76,6 +76,7 @@
       display: inline-block;
       height: 95svh;
       width: auto;
+      max-width: 100%;
     }
 
     .iphone-frame img.frame {
@@ -85,6 +86,7 @@
       position: relative;
       z-index: 2;
       pointer-events: none;
+      max-width: 100%;
     }
 
     .iphone-frame video {
@@ -93,7 +95,7 @@
       left: 5%;
       width: 90%;
       height: 96%;
-      border-radius: 24px;
+      border-radius: 16px;
       object-fit: cover;
       z-index: 1;
     }
@@ -101,26 +103,42 @@
     /* Music toggle inside iPhone mockup */
     .music-toggle {
       position: absolute;
-      bottom: 25%; /* moved higher */
+      bottom: 20%;
       left: 50%;
       transform: translateX(-50%);
       z-index: 3;
-      padding: 20px 35px;
-      font-size: 1.2rem;
+      padding: 12px 24px;
+      font-size: clamp(0.9rem, 2.5vw, 1.2rem);
       font-weight: 700;
       text-transform: uppercase;
       font-family: "Nova Square", sans-serif;
       color: #fff;
       background: rgba(0,0,0,0.65);
       border: 2px solid rgba(255,255,255,0.7);
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
-    .music-toggle.off {
-      text-decoration: line-through;
-    }
+    .music-toggle.off { text-decoration: line-through; }
     .music-toggle:hover { background: rgba(255,255,255,0.2); }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+        justify-content: flex-start;
+        text-align: center;
+        padding: 20px;
+      }
+      .hero {
+        order: -1;
+        margin-bottom: 20px;
+      }
+      .iphone-frame { height: 70svh; }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.2rem; }
+      .intro { font-size: 1rem; }
+    }
   </style>
 </head>
 <body>
