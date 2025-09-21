@@ -94,8 +94,8 @@ rdt('track', 'join-discord', {
       justify-content: center;
       gap: 10px;
       margin-top: 1.2rem;
-      padding: 0.6rem 1.2rem;
-      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      padding: 1rem 2rem;
+      font-size: clamp(1.2rem, 3vw, 1.5em);
       font-weight: 700;
       color: #000;
       background: #fff;
@@ -104,6 +104,21 @@ rdt('track', 'join-discord', {
       cursor: pointer;
     }
     .subscribe-button:hover, .waitlist-button:hover { background: #ddd; }
+
+
+
+/* Animation for waitlist button text */
+@keyframes wiggle {
+0% { transform: translateX(0); }
+25% { transform: translateX(-5px); }
+50% { transform: translateX(5px); }
+75% { transform: translateX(-5px); }
+100% { transform: translateX(0); }
+}
+.waitlist-button span {
+display: inline-block;
+animation: wiggle 1.2s ease-in-out infinite;
+}
 
     .footer { margin-top: 20px; font-size: 0.8rem; color: #ccc; }
 
@@ -182,6 +197,20 @@ rdt('track', 'join-discord', {
       .intro { font-size: 1rem; }
       .logo { margin-left: auto; margin-right: auto; }
     }
+
+    /* Wiggle animation */
+    @keyframes wiggle {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    .wiggle {
+      display: inline-block;
+      animation: wiggle 1s ease-in-out infinite;
+    }
+
+
   </style>
 </head>
 <body>
@@ -195,13 +224,16 @@ rdt('track', 'join-discord', {
       <h1 class="audiowide-font">SoulLink</h1>
       <h2>Karma thru Past and Future.</h2>
       <p class="intro">An elite special force officer from 2099 uses spacetime hardware to meet you - her partner in her past and your future.</p>
-      <p class="intro" style="margin-bottom: 0;">Join our community and wait for her arrival.</p>
-      <a class="waitlist-button" href="https://forms.gle/J3F8c1CujMTJZ9hJ8" target="_blank">Join Waitlist</a>
-      &nbsp;&nbsp; AND/OR &nbsp;&nbsp;
+      <p class="intro" style="margin-bottom: 0;">Join so you won't miss her, by end of 2025.</p>
+      <a class="waitlist-button" href="https://forms.gle/J3F8c1CujMTJZ9hJ8" target="_blank">
+        
+        <span class="wiggle">Join Waitlist for Her Arrival  >></span>
+          
+      </a>
+      <!-- &nbsp;&nbsp; AND/OR &nbsp;&nbsp;
       <a class="subscribe-button" href="https://discord.gg/SJ5sxxbQuY" target="_blank">
         Join Discord
-
-      </a>
+      </a> -->
 
       <div class="footer">© Daedalia, Inc 2025</div>
     </section>
