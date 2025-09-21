@@ -59,13 +59,36 @@
       flex-wrap: nowrap; /* keep side-by-side until mobile */
     }
 
-    .content { max-width: 640px; flex: 1 1 60%; min-width: 0; }
+    .content { max-width: 640px; flex: 1 1 60%; min-width: 0; text-align: left; }
+
+    .logo {
+      max-width: 100px;
+      height: auto;
+      margin-bottom: 16px;
+      display: block;
+    }
 
     h1 { text-transform: uppercase; font-size: clamp(2rem, 7vw, 4rem); margin-bottom: 0.5rem; }
     h2 { font-size: clamp(1rem, 4vw, 2rem); margin-bottom: 1.2rem; opacity: 0.9; }
     .intro { font-size: clamp(0.9rem, 2.5vw, 1.2rem); line-height: 1.6; margin-bottom: 1.6rem; color: #ddd; }
 
-    .subscribe-button { display: inline-flex; align-items: center; gap: 10px; margin-top: 1.2rem; padding: 0.6rem 1.2rem; font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 700; color: #000; background: #fff; border-radius: 999px; text-decoration: none; }
+    .subscribe-button, .waitlist-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 1.2rem;
+      padding: 0.6rem 1.2rem;
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      font-weight: 700;
+      color: #000;
+      background: #fff;
+      border-radius: 999px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .subscribe-button:hover, .waitlist-button:hover { background: #ddd; }
+
     .footer { margin-top: 20px; font-size: 0.8rem; color: #ccc; }
 
     .hero { flex: 0 0 auto; display: flex; justify-content: center; align-items: center; position: relative; }
@@ -132,6 +155,7 @@
         min-height: auto;
         flex-wrap: wrap;
       }
+      .content { text-align: center; }
       .hero {
         order: -1;
         margin-bottom: 20px;
@@ -140,6 +164,7 @@
       h1 { font-size: 2rem; }
       h2 { font-size: 1.2rem; }
       .intro { font-size: 1rem; }
+      .logo { margin-left: auto; margin-right: auto; }
     }
   </style>
 </head>
@@ -150,11 +175,18 @@
 
   <main class="container">
     <section class="content">
+      <img src="logo.png" alt="SoulLink Logo" class="logo">
       <h1 class="audiowide-font">SoulLink</h1>
       <h2>Karma thru Past and Future.</h2>
       <p class="intro">An elite special force officer from 2099 uses spacetime hardware to meet you - her partner in her past and your future.</p>
       <p class="intro" style="margin-bottom: 0;">Join our community and wait for her arrival.</p>
-      <a class="subscribe-button" href="https://discord.gg/SJ5sxxbQuY" target="_blank">Join Our Discord</a>
+      <a class="waitlist-button" href="https://forms.gle/J3F8c1CujMTJZ9hJ8" target="_blank">Join Waitlist</a>
+      &nbsp;&nbsp; AND/OR &nbsp;&nbsp;
+      <a class="subscribe-button" href="https://discord.gg/SJ5sxxbQuY" target="_blank">
+        Join Discord
+
+      </a>
+
       <div class="footer">© Daedalia, Inc 2025</div>
     </section>
 
