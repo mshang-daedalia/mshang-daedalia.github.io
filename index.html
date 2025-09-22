@@ -49,7 +49,7 @@ rdt('track', 'join-discord', {
 
     body { position: relative; overflow-x: hidden; }
 
-    body::before { content: ""; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 0; }
+    body::before { content: ""; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 0; }
 
     .background-video {
       position: fixed;
@@ -63,7 +63,7 @@ rdt('track', 'join-discord', {
 
     .audiowide-font { font-family: "Audiowide", sans-serif; }
 
-    .container {
+    /*.container {
       min-height: 100dvh;
       display: flex;
       align-items: center;
@@ -72,8 +72,33 @@ rdt('track', 'join-discord', {
       padding: 20px 50px;
       position: relative;
       z-index: 1;
-      flex-wrap: nowrap; /* keep side-by-side until mobile */
+      flex-wrap: nowrap; 
+    }*/
+
+    /*.container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;   
+      gap: clamp(24px, 5vw, 64px);   
+      z-index: 1;
+      flex-wrap: nowrap; 
+      padding: 20px 50px;
+      position: relative;
+
+    }*/
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;   /* centers both phone + text as one group */
+      gap: clamp(24px, 5vw, 64px); 
+      padding: 20px 50px;
+      position: relative;
+      z-index: 1;
+      flex-wrap: nowrap; 
     }
+
+
 
     .content { max-width: 640px; flex: 1 1 60%; min-width: 0; text-align: left; }
 
@@ -102,8 +127,31 @@ rdt('track', 'join-discord', {
       border-radius: 999px;
       text-decoration: none;
       cursor: pointer;
+
+
+      border: 5px solid rgba(255,255,255,0.5);
+      animation: breathing 2s ease-in-out infinite;
     }
     .subscribe-button:hover, .waitlist-button:hover { background: #ddd; }
+
+
+
+/* stronger glowing pulse */
+@keyframes breathing {
+  0% {
+    border-color: rgba(255,255,255,0.4);
+    box-shadow: 0 0 12px rgba(255,255,255,0.4);
+  }
+  50% {
+    border-color: rgba(255,255,255,1);
+    box-shadow: 0 0 30px rgba(255,255,255,0.9),
+                0 0 60px rgba(255,255,255,0.6);
+  }
+  100% {
+    border-color: rgba(255,255,255,0.4);
+    box-shadow: 0 0 12px rgba(255,255,255,0.4);
+  }
+}
 
 
 
@@ -219,12 +267,21 @@ animation: wiggle 1.2s ease-in-out infinite;
   <audio id="bgMusic" src="background.mp3" loop preload="none"></audio>
 
   <main class="container">
+
+    <aside class="hero">
+      <div class="iphone-frame">
+        <video src="main-scene.mp4" autoplay muted loop playsinline poster="placeholder.png"></video>
+        <img src="iphone-mockup.png" alt="iPhone frame" class="frame">
+        <button id="musicToggle" class="music-toggle off" aria-pressed="false">SOUND OFF</button>
+      </div>
+    </aside>
+
     <section class="content">
       <img src="logo.png" alt="SoulLink Logo" class="logo">
       <h1 class="audiowide-font">SoulLink</h1>
       <h2>Karma thru Past and Future.</h2>
-      <p class="intro">An elite special force officer from 2099 uses spacetime hardware to meet you - her partner in her past and your future.</p>
-      <p class="intro" style="margin-bottom: 0;">Join so you won't miss her, by end of 2025.</p>
+<!--       <p class="intro">An elite special force officer from 2099 uses spacetime hardware to meet you - her partner in her past and your future.</p>
+      <p class="intro" style="margin-bottom: 0;">Join so you won't miss her, by end of 2025.</p> -->
       <a class="waitlist-button" href="https://forms.gle/J3F8c1CujMTJZ9hJ8" target="_blank">
         
         <span class="wiggle">Join Waitlist for Her Arrival  >></span>
@@ -238,13 +295,6 @@ animation: wiggle 1.2s ease-in-out infinite;
       <div class="footer">© Daedalia, Inc 2025</div>
     </section>
 
-    <aside class="hero">
-      <div class="iphone-frame">
-        <video src="main-scene.mp4" autoplay muted loop playsinline poster="placeholder.png"></video>
-        <img src="iphone-mockup.png" alt="iPhone frame" class="frame">
-        <button id="musicToggle" class="music-toggle off" aria-pressed="false">SOUND OFF</button>
-      </div>
-    </aside>
   </main>
 
   <script>
