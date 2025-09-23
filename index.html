@@ -21,6 +21,21 @@ rdt('track', 'join-discord', {
     conversionId: 'join-discord'
 });
 </script>
+
+<script>
+fetch("https://ipapi.co/json/")
+  .then(res => res.json())
+  .then(data => {
+    console.log("Visitor Country:", JSON.stringify(data)); 
+    // Example usage: show waitlist only if outside US
+    if (data.country_name === "United States") {
+      
+    }
+  })
+  .catch(err => console.error("Geo lookup failed", err));
+</script>
+
+
 <!-- DO NOT MODIFY UNLESS TO REPLACE A USER IDENTIFIER -->
 <!-- End Reddit Pixel -->
 
@@ -259,6 +274,21 @@ animation: wiggle 1.2s ease-in-out infinite;
     }
 
 
+/* Hidden by default; shown on mobile under the phone */
+.mobile-cta { display: none; }
+.mobile-cta .waitlist-button { margin-top: 8px; }
+.mobile-cta .wiggle { display: inline-block; }
+
+/* Mobile layout: show the mobile CTA and hide the in-content one */
+@media (max-width: 768px) {
+  .mobile-cta { display: block; }
+  .content .waitlist-button { display: none; }
+  
+  /* Optional: tighten spacing so CTA sits closer to phone */
+  .hero { margin-bottom: 12px; }
+}
+
+
   </style>
 </head>
 <body>
@@ -276,7 +306,16 @@ animation: wiggle 1.2s ease-in-out infinite;
       </div>
     </aside>
 
+    <div class="mobile-cta">
+      <a class="waitlist-button" href="https://forms.gle/J3F8c1CujMTJZ9hJ8" target="_blank">
+        <span class="wiggle">Join Waitlist for Her Arrival  >></span>
+      </a>
+    </div>
+
     <section class="content">
+      <!-- Mobile-first CTA: appears directly under the iPhone on small screens -->
+      
+
       <img src="logo.png" alt="SoulLink Logo" class="logo">
       <h1 class="audiowide-font">SoulLink</h1>
       <h2>Karma thru Past and Future.</h2>
