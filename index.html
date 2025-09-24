@@ -11,343 +11,480 @@
   </script>
 
   <!-- Reddit Pixel -->
-<script>
-!function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','a2_hi8o0f4wrulr');rdt('track', 'PageVisit');
-
-rdt('track', 'waitlist', {
-    conversionId: 'waitlist'
-});
-rdt('track', 'join-discord', {
-    conversionId: 'join-discord'
-});
-</script>
-
-<script>
-fetch("https://ipapi.co/json/")
-  .then(res => res.json())
-  .then(data => {
-    console.log("Visitor Country:", JSON.stringify(data)); 
-    // Example usage: show waitlist only if outside US
-    if (data.country_name === "United States") {
-      
-    }
-  })
-  .catch(err => console.error("Geo lookup failed", err));
-</script>
-
-
-<!-- DO NOT MODIFY UNLESS TO REPLACE A USER IDENTIFIER -->
-<!-- End Reddit Pixel -->
+  <script>
+  !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);
+  rdt('init','a2_hi8o0f4wrulr');
+  rdt('track', 'PageVisit');
+  rdt('track', 'waitlist', { conversionId: 'waitlist' });
+  rdt('track', 'join-discord', { conversionId: 'join-discord' });
+  </script>
+  <!-- End Reddit Pixel -->
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SoulLink</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
-  <link rel="manifest" href="/favicon_io/site.webmanifest">
-
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Cardo:ital,wght@0,400;0,700;1,400&family=Nova+Square&display=swap" rel="stylesheet">
-
-
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; color: #fff; font-family: "Nova Square", sans-serif; }
+    html, body { height: 100%; color: #fff; font-family: "Nova Square", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    :lang(zh-CN) body, :lang(zh-CN) .intro, :lang(zh-CN) .waitlist-button, :lang(zh-CN) .music-toggle, :lang(zh-CN) .footer, :lang(zh-CN) .modal-card {
+      font-family: "Noto Sans SC", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      letter-spacing: 0.1px;
+    }
 
     body { position: relative; overflow-x: hidden; }
-
     body::before { content: ""; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 0; }
+    body.modal-open { overflow: hidden; }
 
     .background-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; z-index: -1;
     }
 
     .audiowide-font { font-family: "Audiowide", sans-serif; }
 
-    /*.container {
-      min-height: 100dvh;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: clamp(24px, 5vw, 64px);
-      padding: 20px 50px;
-      position: relative;
-      z-index: 1;
-      flex-wrap: nowrap; 
-    }*/
-
-    /*.container {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;   
-      gap: clamp(24px, 5vw, 64px);   
-      z-index: 1;
-      flex-wrap: nowrap; 
-      padding: 20px 50px;
-      position: relative;
-
-    }*/
-
     .container {
-      display: flex;
-      align-items: center;
-      justify-content: center;   /* centers both phone + text as one group */
-      gap: clamp(24px, 5vw, 64px); 
-      padding: 20px 50px;
-      position: relative;
-      z-index: 1;
-      flex-wrap: nowrap; 
+      display: flex; align-items: center; justify-content: center;
+      gap: clamp(24px, 5vw, 64px); padding: 20px 50px; position: relative; z-index: 1; flex-wrap: nowrap;
     }
-
-
 
     .content { max-width: 640px; flex: 1 1 60%; min-width: 0; text-align: left; }
 
-    .logo {
-      max-width: 100px;
-      height: auto;
-      margin-bottom: 16px;
-      display: block;
-    }
+    .logo { max-width: 100px; height: auto; margin-bottom: 16px; display: block; }
 
     h1 { text-transform: uppercase; font-size: clamp(2rem, 7vw, 4rem); margin-bottom: 0.5rem; }
     h2 { font-size: clamp(1rem, 4vw, 2rem); margin-bottom: 1.2rem; opacity: 0.9; }
     .intro { font-size: clamp(0.9rem, 2.5vw, 1.2rem); line-height: 1.6; margin-bottom: 1.6rem; color: #ddd; }
 
     .subscribe-button, .waitlist-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 1.2rem;
-      padding: 1rem 2rem;
-      font-size: clamp(1.2rem, 3vw, 1.5em);
-      font-weight: 700;
-      color: #000;
-      background: #fff;
-      border-radius: 999px;
-      text-decoration: none;
-      cursor: pointer;
-
-
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      margin-top: 1.2rem; padding: 1rem 2rem; font-size: clamp(1.2rem, 3vw, 1.5em);
+      font-weight: 700; color: #000; background: #fff; border-radius: 999px; text-decoration: none; cursor: pointer;
       border: 5px solid rgba(255,255,255,0.5);
       animation: breathing 2s ease-in-out infinite;
     }
     .subscribe-button:hover, .waitlist-button:hover { background: #ddd; }
 
 
+    .discord-button{
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      margin: 1.2rem 0; padding: 1rem 2rem; font-size: 1rem;
+      font-weight: 700; color: #000; background: #fff; border-radius: 999px; text-decoration: none; cursor: pointer;
+      border: 5px solid rgba(255,255,255,0.5);
+    }
 
-/* stronger glowing pulse */
-@keyframes breathing {
-  0% {
-    border-color: rgba(255,255,255,0.4);
-    box-shadow: 0 0 12px rgba(255,255,255,0.4);
-  }
-  50% {
-    border-color: rgba(255,255,255,1);
-    box-shadow: 0 0 30px rgba(255,255,255,0.9),
-                0 0 60px rgba(255,255,255,0.6);
-  }
-  100% {
-    border-color: rgba(255,255,255,0.4);
-    box-shadow: 0 0 12px rgba(255,255,255,0.4);
-  }
-}
+    @keyframes breathing {
+      0% { border-color: rgba(255,255,255,0.4); box-shadow: 0 0 12px rgba(255,255,255,0.4); }
+      50% { border-color: rgba(255,255,255,1); box-shadow: 0 0 30px rgba(255,255,255,0.9), 0 0 60px rgba(255,255,255,0.6); }
+      100% { border-color: rgba(255,255,255,0.4); box-shadow: 0 0 12px rgba(255,255,255,0.4); }
+    }
 
-
-
-/* Animation for waitlist button text */
-@keyframes wiggle {
-0% { transform: translateX(0); }
-25% { transform: translateX(-5px); }
-50% { transform: translateX(5px); }
-75% { transform: translateX(-5px); }
-100% { transform: translateX(0); }
-}
-.waitlist-button span {
-display: inline-block;
-animation: wiggle 1.2s ease-in-out infinite;
-}
+    @keyframes wiggle { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+    .waitlist-button span { display:inline-block; animation: wiggle 1.2s ease-in-out infinite; }
 
     .footer { margin-top: 20px; font-size: 0.8rem; color: #ccc; }
 
     .hero { flex: 0 0 auto; display: flex; justify-content: center; align-items: center; position: relative; }
+    .iphone-frame { position: relative; display: inline-block; height: 95svh; width: auto; max-width: 100%; }
+    .iphone-frame img.frame { display: block; height: 100%; width: auto; position: relative; z-index: 2; pointer-events: none; max-width: 100%; }
+    .iphone-frame video { position: absolute; top: 2%; left: 5%; width: 90%; height: 96%; border-radius: 16px; object-fit: cover; z-index: 1; }
 
-    .iphone-frame {
-      position: relative;
-      display: inline-block;
-      height: 95svh;
-      width: auto;
-      max-width: 100%;
-    }
-
-    .iphone-frame img.frame {
-      display: block;
-      height: 100%;
-      width: auto;
-      position: relative;
-      z-index: 2;
-      pointer-events: none;
-      max-width: 100%;
-    }
-
-    .iphone-frame video {
-      position: absolute;
-      top: 2%;
-      left: 5%;
-      width: 90%;
-      height: 96%;
-      border-radius: 16px;
-      object-fit: cover;
-      z-index: 1;
-    }
-
-    /* Music toggle inside iPhone mockup */
     .music-toggle {
-      position: absolute;
-      bottom: 20%;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 3;
-      padding: 12px 24px;
-      font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-      font-weight: 700;
-      text-transform: uppercase;
-      font-family: "Nova Square", sans-serif;
-      color: #fff;
-      background: rgba(0,0,0,0.65);
-      border: 2px solid rgba(255,255,255,0.7);
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+      position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%); z-index: 3;
+      padding: 12px 24px; font-size: clamp(0.9rem, 2.5vw, 1.2rem); font-weight: 700; text-transform: uppercase;
+      font-family: "Nova Square", sans-serif; color: #fff; background: rgba(0,0,0,0.65);
+      border: 2px solid rgba(255,255,255,0.7); border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease;
     }
     .music-toggle.off { text-decoration: line-through; }
     .music-toggle:hover { background: rgba(255,255,255,0.2); }
 
-    /* Responsive adjustments */
+    /* Language switcher (top-right) */
+    .lang-switch {
+      color: white;
+      position: fixed; top: 16px; right: 16px; z-index: 10;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.5);
+      background: rgba(0,0,0,0.4); backdrop-filter: blur(6px);
+      font-size: 0.95rem; text-transform: uppercase; cursor: pointer; user-select: none;
+    }
+    .lang-switch:hover { background: rgba(255,255,255,0.12); }
+
+    /* Hidden by default; shown on mobile under the phone */
+    .mobile-cta { display: none; }
+    .mobile-cta .waitlist-button { margin-top: 8px; }
+    .mobile-cta .wiggle { display: inline-block; }
+
     @media (max-width: 768px) {
       html, body { overflow-y: auto; }
-      .container {
-        flex-direction: column;
-        justify-content: flex-start;
-        text-align: center;
-        padding: 20px;
-        min-height: auto;
-        flex-wrap: wrap;
-      }
+      .container { flex-direction: column; justify-content: flex-start; text-align: center; padding: 20px; min-height: auto; flex-wrap: wrap; }
       .content { text-align: center; }
-      .hero {
-        order: -1;
-        margin-bottom: 20px;
-      }
+      .hero { order: -1; margin-bottom: 12px; }
       .iphone-frame { height: 60svh; }
       h1 { font-size: 2rem; }
       h2 { font-size: 1.2rem; }
       .intro { font-size: 1rem; }
       .logo { margin-left: auto; margin-right: auto; }
+      .mobile-cta { display: block; }
+      .content .waitlist-button { display: none; }
     }
 
-    /* Wiggle animation */
-    @keyframes wiggle {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      75% { transform: translateX(5px); }
+    /* Backdrop stays fixed */
+    .modal-backdrop {
+      position: fixed; inset: 0; z-index: 20;
+      display: none;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(4px);
+    }
+    .modal-backdrop.open { display: block; }
+
+    /* The overlay container can scroll if needed */
+    .modal-wrap {
+      position: fixed; inset: 0; z-index: 21;
+      display: none;
+      align-items: center; justify-content: center;
+      padding: 24px;
+      overflow: auto;                  /* allow overlay to scroll */
+      overscroll-behavior: contain;    /* stop scroll chaining to body */
+      -webkit-overflow-scrolling: touch;
+    }
+    .modal-wrap.open { display: flex; }
+
+    /* The card never exceeds viewport and can scroll internally */
+    .modal-card {
+      width: min(720px, 92vw);         /* cap width to viewport */
+      max-width: 92vw;
+
+      max-height: 92vh;                /* cap height to viewport */
+      overflow: auto;                  /* scroll inside the card when needed */
+      -webkit-overflow-scrolling: touch;
+
+      background: rgba(15,15,20,0.6);
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 10px 50px rgba(0,0,0,0.6), 0 0 40px rgba(255,255,255,0.08) inset;
+      border-radius: 24px;
+      padding: clamp(16px, 3vw, 28px);
+      position: relative;
+      animation: breathing 2.2s ease-in-out infinite;
     }
 
-    .wiggle {
+
+    .modal-title {
+      font-size: clamp(1.25rem, 3vw, 1.6rem);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .modal-subtitle {
+      font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+      color: #ddd;
+      margin-bottom: 16px;
+    }
+
+    .close-btn {
+      color: white;
+      position: absolute; top: 10px; right: 10px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 999px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .close-btn:hover { background: rgba(255,255,255,0.18); }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-grid .full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 0.95rem;
+      margin-bottom: 6px;
       display: inline-block;
-      animation: wiggle 1s ease-in-out infinite;
+      opacity: 0.9;
     }
 
+    input[type="email"], input[type="tel"], textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.35);
+      background: rgba(0,0,0,0.35);
+      color: #fff;
+      outline: none;
+      font-size: 1rem;
+    }
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.6); }
 
-/* Hidden by default; shown on mobile under the phone */
-.mobile-cta { display: none; }
-.mobile-cta .waitlist-button { margin-top: 8px; }
-.mobile-cta .wiggle { display: inline-block; }
+    textarea { min-height: 120px; resize: vertical; }
 
-/* Mobile layout: show the mobile CTA and hide the in-content one */
-@media (max-width: 768px) {
-  .mobile-cta { display: block; }
-  .content .waitlist-button { display: none; }
-  
-  /* Optional: tighten spacing so CTA sits closer to phone */
-  .hero { margin-bottom: 12px; }
-}
+    .submit-row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; margin-top: 12px;
+    }
 
+    .submit-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 8px; padding: 0.9rem 1.5rem; border-radius: 999px; border: 5px solid rgba(255,255,255,0.5);
+      background: #fff; color: #000; font-weight: 800; cursor: pointer;
+      animation: breathing 2s ease-in-out infinite;
+    }
+    .submit-btn:hover { background: #ddd; }
+
+    .helper { font-size: 0.9rem; color: #ccc; }
+
+    .community {
+      margin-top: 16px; padding-top: 16px; border-top: 1px dashed rgba(255,255,255,0.25);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    .community .card {
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 16px;
+      padding: 12px;
+      background: rgba(255,255,255,0.04);
+    }
+    .community h4 { margin-bottom: 8px; font-size: 1rem; }
+    .community img { width: 100%; height: auto; border-radius: 12px; }
+
+    @media (max-width: 640px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .community { grid-template-columns: 1fr; }
+    }
+
+    .required {
+      color: #ff6b6b; /* soft red */
+      margin-left: 4px;
+      font-weight: bold;
+    }
 
   </style>
 </head>
 <body>
   <video class="background-video" src="background.mp4" autoplay muted loop playsinline></video>
-
   <audio id="bgMusic" src="background.mp3" loop preload="none"></audio>
 
-  <main class="container">
+  <!-- Language Switcher -->
+  <button id="langSwitch" class="lang-switch" aria-label="Switch language">EN / 中文</button>
 
+  <main class="container">
     <aside class="hero">
       <div class="iphone-frame">
         <video src="main-scene.mp4" autoplay muted loop playsinline poster="placeholder.png"></video>
         <img src="iphone-mockup.png" alt="iPhone frame" class="frame">
-        <button id="musicToggle" class="music-toggle off" aria-pressed="false">SOUND OFF</button>
+        <button id="musicToggle" class="music-toggle off" aria-pressed="false" data-i18n="soundOff">SOUND OFF</button>
       </div>
     </aside>
 
     <div class="mobile-cta">
-      <a class="waitlist-button" href="https://forms.gle/J3F8c1CujMTJZ9hJ8" target="_blank">
-        <span class="wiggle">Join Waitlist for Her Arrival  >></span>
+      <a class="waitlist-button" href="#" data-open-waitlist>
+        <span class="wiggle" data-i18n="cta">Join Waitlist for Her Arrival  >></span>
       </a>
     </div>
 
     <section class="content">
-      <!-- Mobile-first CTA: appears directly under the iPhone on small screens -->
-      
-
       <img src="logo.png" alt="SoulLink Logo" class="logo">
       <h1 class="audiowide-font">SoulLink</h1>
-      <h2>Karma thru Past and Future.</h2>
-<!--       <p class="intro">An elite special force officer from 2099 uses spacetime hardware to meet you - her partner in her past and your future.</p>
-      <p class="intro" style="margin-bottom: 0;">Join so you won't miss her, by end of 2025.</p> -->
-      <a class="waitlist-button" href="https://forms.gle/J3F8c1CujMTJZ9hJ8" target="_blank">
-        
-        <span class="wiggle">Join Waitlist for Her Arrival  >></span>
-          
+      <h2 data-i18n="tagline">Karma thru Past and Future.</h2>
+
+      <a class="waitlist-button" href="#" data-open-waitlist>
+        <span class="wiggle" data-i18n="cta">Join Waitlist for Her Arrival  >></span>
       </a>
-      <!-- &nbsp;&nbsp; AND/OR &nbsp;&nbsp;
-      <a class="subscribe-button" href="https://discord.gg/SJ5sxxbQuY" target="_blank">
-        Join Discord
-      </a> -->
 
-      <div class="footer">© Daedalia, Inc 2025</div>
+      <div class="footer" data-i18n="footer">© Daedalia, Inc 2025</div>
     </section>
-
   </main>
 
+  <!-- Modal Backdrop -->
+  <div class="modal-backdrop" id="waitlistBackdrop"></div>
+
+  <!-- Modal -->
+  <div class="modal-wrap" id="waitlistModal" role="dialog" aria-modal="true" aria-labelledby="waitlistTitle">
+    <div class="modal-card">
+      <button class="close-btn" id="waitlistClose" aria-label="Close">✕</button>
+      <div class="modal-title" id="waitlistTitle" data-i18n="formTitle">Join the SoulLink Waitlist</div>
+      <div class="modal-subtitle" data-i18n="formSubtitle">Be the first to know. We’ll only message when it matters.</div>
+
+      <form id="waitlistForm" novalidate>
+        <div class="form-grid">
+          <!-- Email (non-CN) -->
+          <div class="full" id="emailGroup" style="display:none">
+            <label for="email" data-i18n="emailLabel">Email</label><span class="required">*</span>
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
+          </div>
+
+          <!-- Phone (CN) -->
+          <div class="full" id="phoneGroup" style="display:none">
+            <label for="phone" data-i18n="phoneLabel">Phone (China Mainland)</label><span class="required">*</span>
+            <input type="tel" id="phone" name="phone" placeholder="1XXXXXXXXXX" inputmode="numeric" pattern="^1\\d{10}$" autocomplete="tel">
+            <div class="helper" data-i18n="phoneHint">We may use WeChat/SMS for important updates.</div>
+          </div>
+
+          <!-- Thoughts -->
+          <div class="full">
+            <label for="thoughts" data-i18n="thoughtsLabel">Any thoughts, questions, or why you’re excited about SoulLink?</label>
+            <textarea id="thoughts" name="thoughts" placeholder="Tell us what you hope to see…" data-i18n-placeholder="thoughtsPH"></textarea>
+          </div>
+        </div>
+
+        <div class="submit-row">
+          <button type="submit" class="submit-btn" id="submitBtn" data-i18n="submit">Submit</button>
+          <div class="helper" id="formMsg" aria-live="polite"></div>
+        </div>
+
+        <div class="community" id="communitySection">
+          <!-- CN: WeChat QR -->
+          <div class="card" id="wechatCard" style="display:none">
+            <h4 data-i18n="wechatTitle">Join our WeChat</h4>
+            <img src="images/wechat-0923.png" alt="WeChat QR Code" style='width: 200px;'>
+            <div class="helper" data-i18n="wechatHint">Scan to join the community.</div>
+          </div>
+
+          <!-- Others: Discord -->
+          <div class="card" id="discordCard" style="display:none">
+            <h4 data-i18n="discordTitle">Join our Discord</h4>
+            <a href="https://discord.com/invite/SJ5sxxbQuY" target="_blank" class="discord-button" style="margin-top:4px" rel="noopener" data-i18n="discordCTA">Open Discord</a>
+            <div class="helper" data-i18n="discordHint">Dev logs, early builds, and events.</div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script>
+    // ----------------------------
+    // Globals (country + lang)
+    // ----------------------------
+    window.APP_COUNTRY = 'US'; // ISO-3166-1 alpha-2, updated by geo lookup
+    window.APP_LANG = 'en';    // 'en' | 'zh-CN'
+
+    // i18n dictionary
+    const I18N = {
+      'en': {
+        tagline: 'Karma thru Past and Future.',
+        cta: 'Join Waitlist for Her Arrival  >>',
+        footer: '© Daedalia, Inc 2025',
+        soundOn: 'SOUND ON',
+        soundOff: 'SOUND OFF',
+        switcher: 'EN / 中文',
+        formTitle: 'Join the SoulLink Waitlist',
+        formSubtitle: 'Be the first to know. We’ll only message when it matters.',
+        emailLabel: 'Email',
+        phoneLabel: 'Phone (China Mainland)',
+        phoneHint: 'We may use WeChat/SMS for important updates.',
+        thoughtsLabel: 'Any thoughts, questions, or why you’re excited about SoulLink?',
+        thoughtsPH: 'Tell us what you hope to see…',
+        submit: 'Submit',
+        wechatTitle: 'Join our WeChat',
+        wechatHint: 'Scan to join the community.',
+        discordTitle: 'Join our Discord',
+        discordCTA: 'Open Discord',
+        discordHint: 'Dev logs, early builds, and events.',
+        sentOK: 'Thanks—submitted!',
+        sentFail: 'Something went wrong. Please try again.'
+      },
+      'zh-CN': {
+        tagline: '因果相连，跨越过去与未来。',
+        cta: '加入名单，迎接她的到来  >>',
+        footer: '© Daedalia, Inc 2025',
+        soundOn: '有声',
+        soundOff: '无声',
+        switcher: '中文 / EN',
+        formTitle: '加入 SoulLink 名单',
+        formSubtitle: '第一时间获得更新。仅在重要时刻联系你。',
+        emailLabel: '邮箱',
+        phoneLabel: '手机号（中国大陆）',
+        phoneHint: '重要更新可能通过微信/短信通知。',
+        thoughtsLabel: '有什么想法、问题，或你为何对 SoulLink 感到期待？',
+        thoughtsPH: '告诉我们你希望看到什么……',
+        submit: '提交',
+        wechatTitle: '加入我们的微信社群',
+        wechatHint: '扫码加入社区。',
+        discordTitle: '加入我们的 Discord',
+        discordCTA: '打开 Discord',
+        discordHint: '开发日志、早期版本与活动。',
+        sentOK: '感谢提交！',
+        sentFail: '出错了，请重试。'
+      }
+    };
+
+    // Helpers
+    const $ = (sel, root = document) => root.querySelector(sel);
+    const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+    // Apply translations to [data-i18n] and placeholders
+    function applyI18n(lang) {
+      const dict = I18N[lang] || I18N.en;
+      $$('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (!key) return;
+        el.textContent = dict[key] || '';
+      });
+      $$('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (!key) return;
+        el.setAttribute('placeholder', dict[key] || '');
+      });
+
+      // Update switcher label
+      const langBtn = $('#langSwitch');
+      if (langBtn) langBtn.textContent = dict.switcher;
+
+      // Update sound button
+      const btn = $('#musicToggle');
+      const audio = $('#bgMusic');
+      if (btn && audio) {
+        btn.textContent = audio.paused ? dict.soundOff : dict.soundOn;
+      }
+
+      // Toggle <html lang="">
+      document.documentElement.setAttribute('lang', lang);
+
+      // Render CN vs non-CN in the form
+      renderFormByCountry();
+    }
+
+    function chooseLang({ override } = {}) {
+      const saved = localStorage.getItem('SOULLINK_LANG');
+      if (override) {
+        window.APP_LANG = override;
+        localStorage.setItem('SOULLINK_LANG', override);
+        return override;
+      } else if (saved === 'zh-CN' || saved === 'en') {
+        window.APP_LANG = saved;
+        return saved;
+      }
+      const lang = (window.APP_COUNTRY === 'CN') ? 'zh-CN' : 'en';
+      window.APP_LANG = lang;
+      return lang;
+    }
+
+    // Language switcher
+    $('#langSwitch').addEventListener('click', () => {
+      const next = (window.APP_LANG === 'en') ? 'zh-CN' : 'en';
+      chooseLang({ override: next });
+      applyI18n(window.APP_LANG);
+    });
+
+    // Music toggle logic
     const btn = document.getElementById('musicToggle');
     const audio = document.getElementById('bgMusic');
 
-    function setState(playing) {
+    function setSoundState(playing) {
+      const dict = I18N[window.APP_LANG] || I18N.en;
       if (playing) {
         btn.setAttribute('aria-pressed', 'true');
-        btn.textContent = 'SOUND ON';
+        btn.textContent = dict.soundOn;
         btn.classList.remove('off');
       } else {
         btn.setAttribute('aria-pressed', 'false');
-        btn.textContent = 'SOUND OFF';
+        btn.textContent = dict.soundOff;
         btn.classList.add('off');
       }
     }
@@ -356,16 +493,128 @@ animation: wiggle 1.2s ease-in-out infinite;
       try {
         if (audio.paused) {
           await audio.play();
-          setState(true);
+          setSoundState(true);
         } else {
           audio.pause();
-          setState(false);
+          setSoundState(false);
         }
       } catch (e) { console.warn(e); }
     });
 
-    audio.addEventListener('pause', () => setState(false));
-    audio.addEventListener('play', () => setState(true));
+    audio.addEventListener('pause', () => setSoundState(false));
+    audio.addEventListener('play', () => setSoundState(true));
+
+    // Waitlist modal controls
+    const modal = $('#waitlistModal');
+    const backdrop = $('#waitlistBackdrop');
+    const openers = $$('[data-open-waitlist]');
+    const closer = $('#waitlistClose');
+
+    function openModal() {
+      modal.classList.add('open');
+      backdrop.classList.add('open');
+      document.body.classList.add('modal-open');
+      // focus first field
+      setTimeout(() => {
+        const first = (window.APP_COUNTRY === 'CN' || window.APP_LANG === 'zh-CN') ? $('#phone') : $('#email');
+        first && first.focus();
+      }, 0);
+    }
+    function closeModal() {
+      modal.classList.remove('open');
+      backdrop.classList.remove('open');
+      document.body.classList.remove('modal-open');
+    }
+    openers.forEach(el => el.addEventListener('click', (e) => { e.preventDefault(); openModal(); }));
+    closer.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', (e) => { if (e.target === backdrop) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    // Render CN vs non-CN sections
+    function renderFormByCountry() {
+      const isCN = (window.APP_COUNTRY === 'CN' || window.APP_LANG === 'zh-CN');
+      $('#emailGroup').style.display = isCN ? 'none' : 'block';
+      $('#discordCard').style.display = isCN ? 'none' : 'block';
+      $('#phoneGroup').style.display = isCN ? 'block' : 'none';
+      $('#wechatCard').style.display = isCN ? 'block' : 'none';
+    }
+
+
+    // Form submit → exact payload
+    const form = $('#waitlistForm');
+    const formMsg = $('#formMsg');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const isCN = (window.APP_COUNTRY === 'CN');
+      const emailRaw = ($('#email')?.value || '').trim();
+      const email = emailRaw.replace(/\s+/g, '');
+      const phone = ($('#phone')?.value || '').trim();
+      const thoughts = ($('#thoughts')?.value || '').trim();
+
+      // Basic validation
+      if (!isCN && !email) {
+        formMsg.textContent = (I18N[window.APP_LANG] || I18N.en).sentFail + ' (email required)';
+        return;
+      }
+      if (isCN && !phone) {
+        formMsg.textContent = (I18N[window.APP_LANG] || I18N.en).sentFail + ' (phone required)';
+        return;
+      }
+      if (isCN && !/^1\d{10}$/.test(phone)) {
+        formMsg.textContent = (I18N[window.APP_LANG] || I18N.en).sentFail + ' (phone format)';
+        return;
+      }
+
+      // Build payload EXACTLY as requested
+      const payload = {
+        mobile: isCN ? phone : '',
+        email: isCN ? '' : email,
+        country: window.APP_COUNTRY,
+        suggestion: thoughts || ''
+      };
+
+      try {
+        const res = await fetch('https://api.soulflame.app/api/website/v1/open/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) throw new Error('bad status');
+        form.reset();
+        formMsg.textContent = (I18N[window.APP_LANG] || I18N.en).sentOK;
+        // keep modal open so they can scan/join community
+      } catch (err) {
+        console.warn(err);
+        formMsg.textContent = (I18N[window.APP_LANG] || I18N.en).sentFail;
+      }
+    });
+
+    // Geo-detect via ipapi.co (non-blocking; EN fallback)
+    fetch("https://ipapi.co/json/")
+      .then(res => res.json())
+      .then(data => {
+        const cc = (data && data.country_code) ? data.country_code.toUpperCase() : null;
+        window.APP_COUNTRY = cc || window.APP_COUNTRY;
+        const lang = chooseLang();
+        applyI18n(lang);
+      })
+      .catch(err => {
+        console.error("Geo lookup failed", err);
+        chooseLang();
+        applyI18n(window.APP_LANG);
+      });
+
+    // First paint: use saved language to avoid flash; render form blocks
+    (function bootstrapI18nEarly() {
+      const saved = localStorage.getItem('SOULLINK_LANG');
+      if (saved === 'zh-CN' || saved === 'en') {
+        window.APP_LANG = saved;
+        applyI18n(saved);
+      } else {
+        applyI18n('en');
+      }
+      renderFormByCountry();
+    })();
   </script>
 </body>
 </html>
